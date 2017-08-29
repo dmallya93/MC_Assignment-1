@@ -4,9 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         float[] arrayValues = new float[30];
         for(int i=0; i< 30; i++)
         {
-            int randomNum = rand.nextInt((100 - 0) + 1) + 100;
+            int randomNum = rand.nextInt(100) + 100;
             arrayValues[i] = randomNum;
         }
         return arrayValues;
@@ -33,18 +32,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bt = (Button) findViewById(R.id.button);
-        bt2 = (Button) findViewById(R.id.button2);
+
+
+        String title = "Health Monitor 11";
+        bt = (Button) findViewById(R.id.run_button);
+        bt2 = (Button) findViewById(R.id.stop_button);
+//        final GraphView graphView = new GraphView(this, [], title, horizontalLabels, verticalLabels, true);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(MainActivity.this, "Graph started", Toast.LENGTH_SHORT).show();
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(MainActivity.this, "Graph stopped", Toast.LENGTH_SHORT).show();
             }
         });
 

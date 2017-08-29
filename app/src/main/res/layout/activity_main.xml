@@ -7,112 +7,180 @@
     android:background="@android:color/darker_gray"
     tools:context="com.example.dilip.myapplication.MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <!--<LinearLayout
         android:layout_width="576dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp"
-        android:weightSum="1"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.214">
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="2dp">-->
 
         <LinearLayout
-            android:layout_width="527dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:weightSum="11"
+            android:orientation="horizontal"
+            android:id="@+id/options_tab">
 
-            <LinearLayout
-                android:layout_width="104dp"
+            <RelativeLayout
+                android:id="@+id/patient_id"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
-                    android:text="Patient Name" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="106dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="1">
+                android:layout_weight="2"
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/textView1"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
                     android:text="Patient ID" />
 
                 <EditText
                     android:id="@+id/editText1"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="ID" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_toRightOf="@+id/textView1"
+                    android:layout_alignBottom="@+id/textView1"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="99dp"
+            <RelativeLayout
+                android:id="@+id/patient_age"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:weightSum="1">
+                android:layout_weight="1"
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
                     android:text="Age" />
 
                 <EditText
                     android:id="@+id/editText2"
-                    android:layout_width="93dp"
-                    android:layout_height="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:ems="10"
+                    android:inputType="number"
+                    android:layout_below="@+id/textView2"
+                    android:layout_alignRight="@+id/textView2"
+                    android:layout_alignEnd="@+id/textView2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/patient_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Patient Name" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="Age" />
+                    android:layout_alignRight="@+id/textView"
+                    android:layout_alignEnd="@+id/textView"
+                    android:layout_below="@+id/textView" />
 
-            </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Sex"
+                    android:layout_alignParentTop="true"
+                    android:paddingStart="8dp"
+                    android:paddingLeft="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioSex"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true">
+
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="@string/radio_male"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"/>
+
+                    <RadioButton
+                        android:id="@+id/radioFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="@string/radio_female"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"/>
+
+                </RadioGroup>
+            </RelativeLayout>
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/run_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/holo_green_light"
-                android:text="Run" />
+                android:background="@drawable/run_button"
+                android:text="Run"
+                android:layout_margin="8dp" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/stop_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/holo_red_dark"
-                android:text="Stop" />
+                android:background="@drawable/stop_button"
+                android:text="Stop"
+                android:layout_margin="8dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_below="@+id/options_tab">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HERE"/>
+        </LinearLayout>
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
 
