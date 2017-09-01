@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+
 import java.util.Random;
 
 
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button bt;
     Button bt2;
-    Random rand;
     String[] verticalLabels = {"0","20","40","60","80","100"};
     String[] horizontalLabels = {"0","100","200","300","400","500","600","700","800","900","1000"};
     GraphView g;
@@ -50,17 +50,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         String title = "Health Monitor 11";
         bt = (Button) findViewById(R.id.run_button);
         bt2 = (Button) findViewById(R.id.stop_button);
-//        final GraphView graphView = new GraphView(this, createRandomVariable(), title, horizontalLabels,
-//                                    verticalLabels, GraphView.LINE);
 
         g = new GraphView(this, createRandomVariable(), title, horizontalLabels,
                 verticalLabels, GraphView.LINE);
-        graph= (LinearLayout)findViewById(R.id.moving_graph);
+        graph = (LinearLayout)findViewById(R.id.moving_graph);
         graph.addView(g);
 
         try {
