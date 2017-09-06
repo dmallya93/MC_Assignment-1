@@ -1,35 +1,35 @@
 package com.example.dilip.myapplication;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-import java.util.Random;
-
-
 public class MainActivity extends AppCompatActivity {
+
+    int VALUES_LEN = 21;
 
     Button bt;
     Button bt2;
-    String[] verticalLabels = {"0","20","40","60","80","100"};
+    String[] verticalLabels = {"100","80","60","40","20","0"};
     String[] horizontalLabels = {"0","100","200","300","400","500","600","700","800","900","1000"};
     GraphView g;
     LinearLayout graph;
     Thread movingGraph = null;
     Boolean flag = null;
-    float[] values = new float[10];
+    float[] values = new float[VALUES_LEN];
 
     Handler threadHandle = new Handler(){
         @Override
         public void handleMessage(Message msg){
-            for (int i = 0; i < 10; i++) {
-                values[i] = (float) Math.ceil(Math.random() * 180);
+            values[0] = 0;
+            for (int i = 1; i < VALUES_LEN; i++) {
+                values[i] = (float) Math.ceil(Math.random() * 100);
             }
             g.invalidate();
             g.setValues(values);
@@ -37,14 +37,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    protected float[] createRandomVariable()
+    protected float[] getValues()
     {
-        float[] arrayValues = new float[30];
-        for(int i=0; i< 20; i++)
-        {
-            arrayValues[i] = i*100;
-        }
-        return arrayValues;
+        return values;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         bt = (Button) findViewById(R.id.run_button);
         bt2 = (Button) findViewById(R.id.stop_button);
 
-        g = new GraphView(this, createRandomVariable(), title, horizontalLabels,
+        g = new GraphView(this, getValues(), title, horizontalLabels,
                 verticalLabels, GraphView.LINE);
         graph = (LinearLayout)findViewById(R.id.moving_graph);
         graph.addView(g);
@@ -98,17 +93,18 @@ public class MainActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flag = false;
-                if (values != null) {
-                    Toast.makeText(MainActivity.this, "Graph Stopped", Toast.LENGTH_SHORT).show();
-                    for (int i = 0; i < 10; i++) {
-                        values[i] = 0;
+                if(flag != null) {
+                    flag = false;
+                    if (values != null) {
+                        Toast.makeText(MainActivity.this, "Graph Stopped", Toast.LENGTH_SHORT).show();
+                        for (int i = 0; i < VALUES_LEN; i++) {
+                            values[i] = 0;
+                        }
+                        g.invalidate();
+                        g.setValues(values);
                     }
-                    g.invalidate();
-                    g.setValues(values);
                 }
             }
         });
-
     }
 }

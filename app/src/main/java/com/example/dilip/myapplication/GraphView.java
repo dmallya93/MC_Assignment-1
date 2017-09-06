@@ -87,6 +87,7 @@ public class GraphView extends View {
 		}
 
 		paint.setTextAlign(Align.CENTER);
+		paint.setTextSize(23);
 		canvas.drawText(title, (graphwidth / 2) + horstart, border - 4, paint);
 
 		if (max != min) {
@@ -111,7 +112,7 @@ public class GraphView extends View {
 					float h = graphheight * rat;
 					if (i > 0)
 						paint.setColor(Color.GREEN);
-						paint.setStrokeWidth(2.0f);
+						paint.setStrokeWidth(5.0f);
 
 						canvas.drawLine(((i - 1) * colwidth) + (horstart + 1) + halfcol, (border - lasth) + graphheight, (i * colwidth) + (horstart + 1) + halfcol, (border - h) + graphheight, paint);
 					lasth = h;
